@@ -57,8 +57,26 @@ policy <- results$policy
 print(policy)
 print(V)
 
-## Explore solution
+## Explore solution (showing a few behaviors depending on stochastic outcomes of
+## conversions)
+set.seed(11) # case wehere parcel 3 is still avail
 sim <- explore_solution_PPR(numeric(init_site), policy, M, P, R,h)
 sim$Treward
 sim$Tsites
+
+set.seed(111) # case wehere parcel 3 is converted at time 1
+sim <- explore_solution_PPR(numeric(init_site), policy, M, P, R,h)
+sim$Treward
+sim$Tsites
+
+set.seed(3) # case wehere parcel 3 is converted at time 2
+sim <- explore_solution_PPR(numeric(init_site), policy, M, P, R,h)
+sim$Treward
+sim$Tsites
+
+set.seed(112) # case wehere parcel 1 is converted at time 1 before we can buy it
+sim <- explore_solution_PPR(numeric(init_site), policy, M, P, R,h)
+sim$Treward
+sim$Tsites
+
 
